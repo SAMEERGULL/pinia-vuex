@@ -1,14 +1,29 @@
 <template>
   <div class="home">
     <div class="count">
-      0
+      {{ store.count }}
     </div>
     <div class="buttons">
-      <button>-</button>
-      <button>+</button>
+      <button @click="store.decreaseCount">-</button>
+      <button @click="store.increaseCount">+</button>
+    </div>
+    <hr>
+    <div>
+      This counter is: {{ store.oddOrEven }}.
+    </div>
+    <hr>
+    <div>
+      <h3>Edit Counter:</h3>
+      <input type="number" v-model="store.count">
     </div>
   </div>
 </template>
+
+<script setup>
+import { useCounterStore } from '@/stores/counter';
+
+const store = useCounterStore();
+</script>
 
 <style>
 .count {
